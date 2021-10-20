@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter
 
 buildscript {
 	repositories {
-		jcenter()
+		mavenCentral()
 	}
 	dependencies {
 		classpath("gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:1.0.10")
@@ -31,35 +31,35 @@ configurations.forEach {
 	it.exclude("org.springframework.boot", "spring-boot-starter-tomcat")
 }
 repositories {
-	jcenter()
+	mavenCentral()
 }
 
 extra["springCloudVersion"] = "2020.0.4"
 
 dependencies {
-	implementation("com.querydsl:querydsl-jpa:4.2.1")
-	implementation("com.querydsl:querydsl-apt:4.2.1")
-	implementation("com.querydsl:querydsl-sql-spring:4.2.1")
-	kapt("com.querydsl:querydsl-apt:4.2.1:jpa")
-	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.springframework.boot:spring-boot-starter-amqp")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.flywaydb:flyway-core")
+	implementation("com.querydsl:querydsl-jpa:5.0.0")
+	implementation("com.querydsl:querydsl-apt:5.0.0")
+	implementation("com.querydsl:querydsl-sql-spring:5.0.0")
+	kapt("com.querydsl:querydsl-apt:5.0.0:jpa")
+	implementation("org.springframework.boot:spring-boot-starter-actuator:2.5.5")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.5.5")
+	implementation("org.springframework.boot:spring-boot-starter-web:2.5.5")
+	implementation("org.springframework.boot:spring-boot-starter-amqp:2.5.5")
+	implementation("org.springframework.boot:spring-boot-starter-web:2.5.5")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
+	implementation("org.flywaydb:flyway-core:8.0.0")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j")
-	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
-	runtimeOnly("mysql:mysql-connector-java")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework.amqp:spring-rabbit-test")
-	kapt("org.springframework.boot:spring-boot-configuration-processor")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	runtimeOnly("com.h2database:h2")
+	implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j:2.0.2")
+	implementation("org.springframework.cloud:spring-cloud-starter-openfeign:3.0.4")
+	runtimeOnly("mysql:mysql-connector-java:8.0.25")
+	testImplementation("org.springframework.boot:spring-boot-starter-test:2.5.5")
+	testImplementation("org.springframework.amqp:spring-rabbit-test:2.3.9")
+	kapt("org.springframework.boot:spring-boot-configuration-processor:2.5.5")
+	testImplementation("org.springframework.boot:spring-boot-starter-test:2.5.5")
+	runtimeOnly("com.h2database:h2:1.4.200")
 	testImplementation("org.junit.jupiter", "junit-jupiter-api")
-	testImplementation("org.mockito:mockito-core:3.1.0")
+	testImplementation("org.mockito:mockito-core:4.0.0")
 	testRuntimeOnly("org.junit.jupiter", "junit-jupiter-engine")
 }
 
