@@ -1,0 +1,27 @@
+server:
+  port: 10002
+  servlet:
+    context-path: /crossfit
+spring:
+  datasource:
+    hikari:
+      username: root
+      password: password
+      jdbc-url: jdbc:mysql://localhost:13306/training
+      validationTimeout: 10000
+      maximumPoolSize: 50
+      leakDetectionThreshold: 1
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database: MYSQL
+    show-sql: true
+    generate-ddl: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+    hibernate:
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+      ddl-auto: validate
