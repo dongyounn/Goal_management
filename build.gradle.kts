@@ -37,6 +37,8 @@ repositories {
 extra["springCloudVersion"] = "2020.0.4"
 
 dependencies {
+	implementation("io.springfox", "springfox-swagger2", "2.9.2")
+	implementation("io.springfox", "springfox-swagger-ui", "2.9.2")
 	implementation("com.querydsl:querydsl-jpa:5.0.0")
 	implementation("com.querydsl:querydsl-apt:5.0.0")
 	implementation("com.querydsl:querydsl-sql-spring:5.0.0")
