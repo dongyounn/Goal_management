@@ -1,4 +1,4 @@
-package com.exercise.crossfit.global.config
+package com.exercise.global.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

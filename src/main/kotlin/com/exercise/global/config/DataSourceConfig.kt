@@ -1,4 +1,4 @@
-package com.exercise.crossfit.global.config
+package com.exercise.global.config
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
