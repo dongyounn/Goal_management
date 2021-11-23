@@ -1,11 +1,11 @@
-package com.exercise.crossfit
+package com.exercise
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class CrossfitApplication
+class ExcerciseApplication
 
 fun main(args: Array<String>) {
-	runApplication<CrossfitApplication>(*args)
+	runApplication<ExcerciseApplication>(*args)
 }
