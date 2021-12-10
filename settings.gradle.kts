@@ -1,1 +1,1 @@
-rootProject.name = "crossfit"
+rootProject.name = "work-management"

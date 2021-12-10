@@ -1,5 +1,6 @@
-package com.exercise.global.config
+package com.work.management.global.config
 
+import com.work.management.global.config.health.HealthInfoProperties
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.actuate.health.Health
@@ -8,7 +9,9 @@ import org.springframework.stereotype.Component
 import javax.annotation.PostConstruct
 
 @Component
-class ApplicationHealthIndicator : HealthIndicator {
+class ApplicationHealthIndicator(
+    private val healthInfoProperties: HealthInfoProperties
+) : HealthIndicator {
 
     private val log = LoggerFactory.getLogger(this::class.java)
 
@@ -16,28 +19,18 @@ class ApplicationHealthIndicator : HealthIndicator {
     * vm option
     *  -Dspring.config.location=classpath:/build-info.properties,classpath:/application.yml,claspath:/logback.xml
     * */
-
-    @Value("\${info.version}")
-    private val appVersion: String? = null
-
-    @Value("\${info.git.hash}")
-    private val gitHash: String? = null
-
-    @Value("\${info.git.buildDate}")
-    private val builtDate: String? = null
-
     @PostConstruct
     fun init() {
-        log.info("version: {}", appVersion)
-        log.info("hash: {}", gitHash)
-        log.info("date: {}", builtDate)
+        log.info("version: {}", healthInfoProperties.version)
+        log.info("hash: {}", healthInfoProperties.git.hash)
+        log.info("date: {}", healthInfoProperties.git.buildDate)
     }
 
     override fun health(): Health {
         return Health.up()
-            .withDetail("version", appVersion)
-            .withDetail("hash", gitHash)
-            .withDetail("build-date", builtDate)
+            .withDetail("version", healthInfoProperties.version)
+            .withDetail("hash", healthInfoProperties.git.hash)
+            .withDetail("build-date", healthInfoProperties.git.buildDate)
             .build()
     }
 }

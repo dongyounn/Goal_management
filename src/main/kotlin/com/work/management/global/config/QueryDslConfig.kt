@@ -1,4 +1,4 @@
-package com.exercise.global.config
+package com.work.management.global.config
 
 import com.querydsl.jpa.impl.JPAQueryFactory
 import org.springframework.context.annotation.Bean

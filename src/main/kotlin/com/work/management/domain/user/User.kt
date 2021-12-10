@@ -1,7 +1,7 @@
-package com.exercise.domain.user
+package com.work.management.domain.user
 
-import com.exercise.global.dto.BaseDomain
-import com.exercise.global.dto.StringCryptoConverter
+import com.work.management.global.dto.BaseDomain
+import com.work.management.global.dto.StringCryptoConverter
 import com.sun.org.apache.xpath.internal.operations.Bool
 import java.time.LocalDateTime
 import javax.persistence.*

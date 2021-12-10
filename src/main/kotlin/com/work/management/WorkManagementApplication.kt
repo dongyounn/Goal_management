@@ -1,11 +1,11 @@
-package com.exercise
+package com.work.management
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class ExcerciseApplication
+class WorkManagementApplication
 
 fun main(args: Array<String>) {
-	runApplication<ExcerciseApplication>(*args)
+	runApplication<WorkManagementApplication>(*args)
 }

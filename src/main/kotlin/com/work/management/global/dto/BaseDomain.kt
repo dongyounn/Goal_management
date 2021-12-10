@@ -1,4 +1,4 @@
-package com.exercise.global.dto
+package com.work.management.global.dto
 
 import java.time.LocalDateTime
 import javax.persistence.Column
@@ -8,10 +8,10 @@ import javax.persistence.PreUpdate
 
 @MappedSuperclass
 abstract class BaseDomain {
-    @Column(name = "CREATED", updatable = false)
+    @Column(name = "created", updatable = false)
     lateinit var created: LocalDateTime
 
-    @Column(name = "UPDATED")
+    @Column(name = "updated")
     lateinit var updated: LocalDateTime
 
     @PrePersist

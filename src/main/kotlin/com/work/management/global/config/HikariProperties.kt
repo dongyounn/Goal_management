@@ -1,4 +1,4 @@
-package com.exercise.global.config
+package com.work.management.global.config
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Configuration

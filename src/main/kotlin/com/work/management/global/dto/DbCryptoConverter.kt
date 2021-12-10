@@ -1,4 +1,4 @@
-package com.exercise.global.dto
+package com.work.management.global.dto
 
 import sun.security.x509.CertificateAlgorithmId.ALGORITHM
 import java.util.*

@@ -1,4 +1,4 @@
-package com.exercise.global.config
+package com.work.management.global.config
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
@@ -12,8 +12,7 @@ import javax.persistence.EntityManagerFactory
 
 @Configuration
 @EnableTransactionManagement
-class DataSourceConfig(
-) {
+class DataSourceConfig {
     @Bean
     @Primary
     internal fun getDataSource(hikariProperties: HikariProperties): HikariDataSource {

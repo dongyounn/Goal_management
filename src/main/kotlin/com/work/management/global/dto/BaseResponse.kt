@@ -1,4 +1,4 @@
-package com.exercise.global.dto
+package com.work.management.global.dto
 
 data class BaseResponse(
     val reason: String,
