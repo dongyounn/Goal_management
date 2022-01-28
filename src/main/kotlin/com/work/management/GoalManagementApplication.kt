@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class WorkManagementApplication
+class GoalManagementApplication
 
 fun main(args: Array<String>) {
-	runApplication<WorkManagementApplication>(*args)
+	runApplication<GoalManagementApplication>(*args)
 }
