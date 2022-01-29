@@ -12,9 +12,9 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>./log/exercise.log</file>
+        <file>./log/goal_management.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>./log/exercise-%d{yyyyMMddHH}-%i.log</fileNamePattern>
+            <fileNamePattern>./log/goal_management-%d{yyyyMMddHH}-%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -26,8 +26,8 @@
         </encoder>
     </appender>
 
-    <logger name="org.springframework" level="DEBUG"/>
-    <logger name="org.hibernate" level="DEBUG"/>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.hibernate" level="INFO"/>
 
     <root level="INFO">
         <appender-ref ref="FILE"/>

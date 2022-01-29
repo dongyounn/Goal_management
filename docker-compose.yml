@@ -1,4 +1,4 @@
-version: '1'
+version: '2'
 services:
   mysql:
     image: mysql:8.0.19
@@ -7,7 +7,7 @@ services:
     ports:
       - "13306:3306"
     environment:
-      - MYSQL_DATABASE=training
+      - MYSQL_DATABASE=goal
       - MYSQL_ROOT_PASSWORD=password
       - TZ=Asia/Seoul
     command:
