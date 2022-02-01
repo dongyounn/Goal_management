@@ -4,6 +4,7 @@ import com.work.management.global.dto.BaseDomain
 import java.time.LocalDateTime
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Table
 
@@ -16,7 +17,7 @@ data class LuckyDrawReward(
     val expired: Boolean
 ) : BaseDomain() {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long? = null
 
     companion object {

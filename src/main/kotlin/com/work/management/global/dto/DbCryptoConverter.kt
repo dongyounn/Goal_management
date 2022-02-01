@@ -1,6 +1,6 @@
 package com.work.management.global.dto
 
-import sun.security.x509.CertificateAlgorithmId.ALGORITHM
+import org.springframework.beans.factory.annotation.Value
 import java.util.*
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
@@ -10,7 +10,8 @@ import javax.persistence.Convert
 @Convert
 class StringCryptoConverter : AttributeConverter<String, String> {
 
-    private val key = "customCyperKey"
+    @Value("\${enc.key}")
+    private val key = ""
 
     override fun convertToEntityAttribute(dbData: String): String {
         val key = SecretKeySpec(key.toByteArray(), "AES")

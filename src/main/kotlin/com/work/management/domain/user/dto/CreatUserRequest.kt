@@ -9,5 +9,10 @@ data class CreatUserRequest(
     val address: String,
     val detailAddress: String,
     @JsonFormat(pattern = "yyyyMMdd")
-    val dayOfBirth: LocalDate
+    val dayOfBirth: LocalDate,
+    val gender: GenderEnum
 )
+
+enum class GenderEnum {
+    MALE, FEMALE
+}
