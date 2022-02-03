@@ -1,6 +1,8 @@
 package com.work.management.domain.user
 
+import com.work.management.domain.user.dto.CreatUserRequest
 import com.work.management.domain.user.dto.GenderEnum
+import com.work.management.domain.user.dto.UpdateUserRequest
 import com.work.management.global.dto.BaseDomain
 import com.work.management.global.dto.StringCryptoConverter
 import javax.persistence.*
@@ -14,12 +16,30 @@ data class User(
     val dayOfBirth: String,
     @Convert(converter = StringCryptoConverter::class)
     val phoneNumber: String,
-    val userAddress: String,
-    val userDetailAddress: String,
+    var userAddress: String,
+    var userDetailAddress: String,
     @Enumerated(EnumType.STRING)
     val gender: GenderEnum
 ) : BaseDomain() {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Long? = null
+    var id: Long? = null
+
+    companion object {
+        fun ofUserCreate(request: CreatUserRequest): User {
+            return User(
+                request.name,
+                request.dayOfBirth.toString(),
+                request.phoneNumber,
+                request.address,
+                request.detailAddress,
+                request.gender
+            )
+        }
+    }
+
+    fun updateUserInfo(request: UpdateUserRequest) {
+        this.userAddress = request.address ?: this.userAddress
+        this.userDetailAddress = request.detailAddress ?: this.userDetailAddress
+    }
 }

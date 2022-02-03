@@ -13,6 +13,12 @@ data class CreatUserRequest(
     val gender: GenderEnum
 )
 
+data class UpdateUserRequest(
+    val phoneNumber: String,
+    val address: String?,
+    val detailAddress: String?
+)
+
 enum class GenderEnum {
     MALE, FEMALE
 }
