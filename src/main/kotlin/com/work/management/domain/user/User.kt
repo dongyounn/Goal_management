@@ -19,7 +19,9 @@ data class User(
     var userAddress: String,
     var userDetailAddress: String,
     @Enumerated(EnumType.STRING)
-    val gender: GenderEnum
+    val gender: GenderEnum,
+    @Enumerated(EnumType.STRING)
+    val status: UserStatusEnum
 ) : BaseDomain() {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,7 +35,8 @@ data class User(
                 request.phoneNumber,
                 request.address,
                 request.detailAddress,
-                request.gender
+                request.gender,
+                UserStatusEnum.ACTIVE
             )
         }
     }
@@ -42,4 +45,8 @@ data class User(
         this.userAddress = request.address ?: this.userAddress
         this.userDetailAddress = request.detailAddress ?: this.userDetailAddress
     }
+}
+
+enum class UserStatusEnum {
+    ACTIVE, SUSPENDED, TERMINATED
 }

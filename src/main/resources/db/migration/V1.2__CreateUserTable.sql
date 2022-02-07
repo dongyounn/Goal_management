@@ -8,6 +8,7 @@ CREATE TABLE user
     user_address        varchar(255) not null comment '유저 주소',
     user_detail_address varchar(255) not null comment '상세 주소',
     gender              varchar(6)   not null comment '성별',
+    user_status         varchar(10)  not null comment '유저 상태',
     created             datetime,
     updated             datetime
 );
