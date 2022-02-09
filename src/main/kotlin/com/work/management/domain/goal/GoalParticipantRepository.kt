@@ -4,5 +4,4 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface GoalRepository : JpaRepository<Goal, Long>
-
+interface GoalParticipantRepository : JpaRepository<GoalParticipants, Long>
