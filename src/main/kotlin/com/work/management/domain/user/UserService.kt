@@ -5,7 +5,7 @@ import com.work.management.domain.user.dto.UpdateUserRequest
 import com.work.management.global.exception.BadRequestException
 import com.work.management.global.exception.ErrorReason
 import org.springframework.stereotype.Service
-import javax.transaction.Transactional
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class UserService(
@@ -14,7 +14,7 @@ class UserService(
     @Transactional
     fun createUser(request: CreatUserRequest) {
         checkCreateUserIsExist(request.phoneNumber)
-        validateUserInfo(request)
+        validatePhoneNumber(request.phoneNumber)
         User.ofUserCreate(request).also {
             userRepository.save(it)
         }
@@ -26,19 +26,19 @@ class UserService(
         user.updateUserInfo(request)
     }
 
-    private fun validateUserInfo(request: CreatUserRequest) {
-        request.phoneNumber.replace("-", "").replace(" ", "").let { formattedPhoneNumber ->
+    private fun validatePhoneNumber(phoneNumber: String) {
+        phoneNumber.replace("-", "").replace(" ", "").let { formattedPhoneNumber ->
             formattedPhoneNumber.takeUnless { it.startsWith("0", false) }?.let {
                 throw BadRequestException(
                     ErrorReason.INVALID_INPUT_DATA,
-                    "전화번호는 0 으로 시작해야합니다. phoneNumber: ${request.phoneNumber}"
+                    "전화번호는 0 으로 시작해야합니다. phoneNumber: $phoneNumber"
                 )
             }
             formattedPhoneNumber.toCharArray().forEach {
                 it.takeUnless { it.isDigit() }?.let {
                     throw BadRequestException(
                         ErrorReason.INVALID_INPUT_DATA,
-                        "숫자만 입력가능합니다. phoneNumber: ${request.phoneNumber}"
+                        "숫자만 입력가능합니다. phoneNumber: $phoneNumber"
                     )
                 }
             }
@@ -54,6 +54,19 @@ class UserService(
     private fun checkUpdateUserIsExist(phoneNumber: String): User {
         return userRepository.findByPhoneNumber(phoneNumber)
             ?: throw BadRequestException(ErrorReason.USER_ALREADY_EXIST, "존재하지 않는 유저입니다. phoneNumber: $phoneNumber")
+    }
+
+    @Transactional(readOnly = true)
+    fun findUserInfoById(phoneNumber: String): User {
+        validatePhoneNumber(phoneNumber)
+        return userRepository.findByPhoneNumber(phoneNumber)
+            ?: throw BadRequestException(ErrorReason.USER_ALREADY_EXIST, "존재하지 않는 유저입니다. phoneNumber: $phoneNumber")
+    }
+
+    @Transactional
+    fun deleteUser(userId: Long) {
+        TODO("나중에 유저 삭제 할 떄 목표 진행중인거 있는지 확인 필요 ")
+        userRepository.deleteById(userId)
     }
 
 
