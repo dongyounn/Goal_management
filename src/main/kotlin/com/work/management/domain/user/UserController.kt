@@ -26,11 +26,12 @@ class UserController(
         userService.createUser(createUserRequest)
     }
 
-    @PutMapping()
+    @PutMapping("/userId")
     fun updateUser(
+        @PathVariable userId: Long,
         @Validated @RequestBody updateUserRequest: UpdateUserRequest
     ) {
-        userService.updateUser(updateUserRequest)
+        userService.updateUser(userId,updateUserRequest)
     }
 
     @GetMapping

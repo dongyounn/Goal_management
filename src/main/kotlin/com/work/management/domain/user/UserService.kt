@@ -21,8 +21,8 @@ class UserService(
     }
 
     @Transactional
-    fun updateUser(request: UpdateUserRequest) {
-        val user = checkUpdateUserIsExist(request.phoneNumber)
+    fun updateUser(userId: Long, request: UpdateUserRequest) {
+        val user = checkUpdateUserIsExist(userId)
         user.updateUserInfo(request)
     }
 
@@ -51,9 +51,8 @@ class UserService(
         }
     }
 
-    private fun checkUpdateUserIsExist(phoneNumber: String): User {
-        return userRepository.findByPhoneNumber(phoneNumber)
-            ?: throw BadRequestException(ErrorReason.USER_ALREADY_EXIST, "존재하지 않는 유저입니다. phoneNumber: $phoneNumber")
+    private fun checkUpdateUserIsExist(userId: Long): User {
+        return userRepository.findById(userId).get()
     }
 
     @Transactional(readOnly = true)
