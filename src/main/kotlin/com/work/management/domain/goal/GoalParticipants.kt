@@ -1,6 +1,8 @@
 package com.work.management.domain.goal
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.work.management.global.dto.BaseDomain
+import java.time.LocalDateTime
 import javax.persistence.Entity
 import javax.persistence.EnumType
 import javax.persistence.Enumerated
@@ -22,6 +24,8 @@ data class GoalParticipants(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long? = null
+
+
 }
 
 enum class GoalStatus {
