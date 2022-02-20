@@ -18,7 +18,9 @@ enum class ErrorReason(
     private val reason: String
 ) {
     INVALID_INPUT_DATA("0001", "001"),
-    USER_ALREADY_EXIST("0001", "003")
+    USER_ALREADY_EXIST("0001", "003"),
+    CREATE_GOAL_ALREADY_MAX_COUNT("0001", "003"),
+    USER_STATUS_IS_NOT_ACTIVE("0001", "004")
     ;
 
     fun toReason() = "${COMPONENT}_${feature}_${reason}"
