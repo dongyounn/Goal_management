@@ -29,5 +29,5 @@ data class GoalParticipants(
 }
 
 enum class GoalStatus {
-    ACTIVE, TERMINATED, PENALTY
+    ACTIVE, TERMINATED, PENALTY, READY
 }

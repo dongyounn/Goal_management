@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat
 import com.work.management.global.dto.BaseDomain
 import java.time.LocalDateTime
 import javax.persistence.Entity
+import javax.persistence.EnumType
+import javax.persistence.Enumerated
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
@@ -18,7 +20,9 @@ data class Goal(
     val currentParticipants: Int,
     val goalName: String,
     val startDate: LocalDateTime,
-    val endDate: LocalDateTime
+    val endDate: LocalDateTime,
+    @Enumerated(EnumType.STRING)
+    val goalStatus: GoalStatusEnum
 ) : BaseDomain() {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,7 +37,8 @@ data class Goal(
                 0,
                 request.goalName,
                 request.startDate,
-                request.endDate
+                request.endDate,
+                GoalStatusEnum.READY
             )
         }
     }
@@ -48,3 +53,7 @@ data class GoalCreateRequest(
     @JsonFormat(pattern = "yyyyMMdd")
     val endDate: LocalDateTime
 )
+
+enum class GoalStatusEnum {
+    READY, ACTIVE, TERMINATED, END
+}
