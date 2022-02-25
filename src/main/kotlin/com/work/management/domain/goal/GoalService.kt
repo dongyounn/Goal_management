@@ -25,7 +25,32 @@ class GoalService(
         validationChangeable(goalId)
     }
 
+    private fun validationChangeable(goalId: Long) {
+        goalRepository.findByIdOrNull(goalId)?.let {
+            if (it.goalStatus != GoalStatusEnum.READY) {
 
+            }
+        } ?: throw BadRequestException(
+            ErrorReason.INVALID_INPUT_DATA,
+            "존재하지 않는 목표입니다."
+        )
+    }
+
+    private fun validationCreateGoal(userId: Long) {
+        checkCreateGoalValidation(userId)
+        checkUserValidation(userId)
+    }
+
+    private fun checkCreateGoalValidation(userId: Long) {
+        goalRepository.findByReaderUserId(userId).let {
+            if (it.count() >= MAX_CREATE_GOAL) {
+                throw BadRequestException(
+                    ErrorReason.CREATE_GOAL_ALREADY_MAX_COUNT,
+                    "생성한 목표 갯수는 3개를 초과할 수 없습니다. 현재 : ${it.count()} 개"
+                )
+            }
+        }
+    }
 
     private fun checkUserValidation(userId: Long) {
         userRepository.findByIdOrNull(userId)?.let {
